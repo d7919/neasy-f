@@ -466,7 +466,7 @@ contains
   !> through `dimid` and `varid` respectively.
   subroutine neasyf_dim_index(parent_id, name, dim_size, dimid, varid, units, long_name, unlimited)
     use netcdf, only : nf90_inq_dimid, nf90_inq_varid, nf90_def_var, nf90_def_dim, nf90_put_var, nf90_put_att, &
-         NF90_NOERR, NF90_EBADDIM, NF90_UNLIMITED
+         NF90_NOERR, NF90_EBADDIM, NF90_UNLIMITED, nf90_inquire_dimension
     !> Name of the variable
     character(len=*), intent(in) :: name
     !> NetCDF ID of the parent group/file
