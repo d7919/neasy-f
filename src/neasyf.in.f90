@@ -344,7 +344,7 @@ contains
     !> NetCDF ID of the parent group/file
     integer, intent(in) :: parent_id
     !> Size of the dimension if values isn't specified
-    integer, optional, intent(in) :: dim_size
+    integer, optional, intent(in out) :: dim_size
     !> NetCDF ID of the dimension
     integer, optional, intent(out) :: dimid
     !> NetCDF ID of the corresponding variable
@@ -366,6 +366,10 @@ contains
     if (status == NF90_NOERR) then
       if (present(dimid)) then
         dimid = dim_id
+      end if
+
+      if (present(dim_size)) then
+         call neasyf_error(nf90_inquire_dimension(parent_id, dim_id, len = dim_size))
       end if
 
       if (present(varid)) then
